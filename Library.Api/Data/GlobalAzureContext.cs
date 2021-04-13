@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Library.Api.Data
 {
-    public partial class LibraryDemoContext : DbContext
+    public partial class GlobalAzureContext : DbContext
     {
-        public LibraryDemoContext(DbContextOptions<LibraryDemoContext> options)
+        public GlobalAzureContext(DbContextOptions<GlobalAzureContext> options)
             : base(options)
         {
         }
@@ -28,7 +28,7 @@ namespace Library.Api.Data
             if (!optionsBuilder.IsConfigured)
             {
                 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-5FL37A7\\MSSQLSERVER2019; user=sa; password=Pastor1987; Initial Catalog=LibraryDemo; Integrated Security=True; ConnectRetryCount=0");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-5FL37A7\\MSSQLSERVER2019; user=sa; password=Pastor1987; Initial Catalog=GlobalAzure; Integrated Security=True; ConnectRetryCount=0");
             }
         }
 

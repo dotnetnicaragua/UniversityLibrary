@@ -14,23 +14,24 @@ namespace Library.Api.GraphQL.Books
         protected override void Configure(IObjectTypeDescriptor<Book> descriptor)
         {
             descriptor.Description("Respresents all the books");
-            //descriptor
-            //    .Field(p => p.Id).Ignore();
+
+            //For ignoring a field
+            descriptor
+                .Field(p => p.CreatedAt).Ignore();
 
             descriptor
                 .Field(c => c.Id)
-                //.ResolveWith<Resolvers>(c => c.GetBook(default!, default!))
-                .UseDbContext<LibraryDemoContext>()
-                .Description("This is the Book");
+                //.ResolveWith<Resolvers>(c => c.GetBookAuthors(default!, default!))
+                .UseDbContext<GlobalAzureContext>()
+                .Description("This is the Book Author");
 
         }
 
-
         private class Resolvers
         {
-            public IQueryable<Book> GetBook(Book book, [ScopedService] LibraryDemoContext context)
+            public IQueryable<Author> GetBookAuthors(Book book, [ScopedService] GlobalAzureContext context)
             {
-                return (IQueryable<Book>)context.Books.Select(p => p.Id == book.Id);
+                return context.BookAuthors.Where(p => p.BookId == book.Id).Select(n => n.Author);
             }
         }
     }

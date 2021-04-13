@@ -10,12 +10,15 @@ namespace Library.Api.GraphQL
 {
     public class Query
     {
-        [UseDbContext(typeof(LibraryDemoContext))]
+        [UseDbContext(typeof(GlobalAzureContext))]
         [UseFiltering]
         [UseSorting]
-        public IQueryable<Book> GetBook([ScopedService] LibraryDemoContext context)
+        public IQueryable<Book> GetBook([ScopedService] GlobalAzureContext context)
         {
             return context.Books;
         }
+
+        //TODO: Add method for Getting data from other entities
+
     }
 }

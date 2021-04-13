@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Library.Api.Data.Models
 {
     [Table("books")]
-    [Index(nameof(Isbn), Name = "UQ__books__99F9D0A45324825E", IsUnique = true)]
+    [Index(nameof(Isbn), Name = "UQ__books__99F9D0A475A2E225", IsUnique = true)]
     public partial class Book
     {
         public Book()

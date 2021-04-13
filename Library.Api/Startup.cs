@@ -28,14 +28,7 @@ namespace Library.Api
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-
-            //services.AddMvc();
-            //services.AddDbContext<LibraryDemoContext>(options =>
-            //    options.UseSqlServer(configuration["ConnectionStrings:LibraryUniversity"]));
-
-            //services.AddScoped<BookRepository>();
-
-            services.AddPooledDbContextFactory<LibraryDemoContext>(opt => opt.UseSqlServer(configuration["ConnectionStrings:LibraryUniversity"]));
+            services.AddPooledDbContextFactory<GlobalAzureContext>(optionsBuilder => optionsBuilder.UseSqlServer(configuration["ConnectionStrings:GlobalAzure"]));
 
             services
                 .AddGraphQLServer()
