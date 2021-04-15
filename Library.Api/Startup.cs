@@ -33,8 +33,8 @@ namespace Library.Api
             services
                 .AddGraphQLServer()
                 .AddQueryType<Query>()
-                //.AddMutationType<Mutation>()
-                //.AddSubscriptionType<Subscription>()
+                .AddMutationType<Mutation>()
+                .AddSubscriptionType<Subscription>()
                 .AddType<BookType>()
                 .AddFiltering()
                 .AddSorting()
