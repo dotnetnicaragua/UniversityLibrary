@@ -12,7 +12,7 @@ namespace Library.Api.GraphQL
     {
         [Subscribe]
         [Topic]
-        public Book OnPlatformAdded([EventMessage] Book book)
+        public Book OnBookAdded([EventMessage] Book book)
         {
             return book;
         }

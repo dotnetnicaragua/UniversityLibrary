@@ -16,7 +16,7 @@ namespace Library.Api.GraphQL
     public class Mutation
     {
         [UseDbContext(typeof(GlobalAzureContext))]
-        public async Task<AddBookPayload> AddPlatformAsync(
+        public async Task<AddBookPayload> AddBookAsync(
             AddBookInput input,
             [ScopedService] GlobalAzureContext context,
             [Service] ITopicEventSender eventSender,
@@ -26,17 +26,17 @@ namespace Library.Api.GraphQL
             var book = new Book
             {
                 Title = input.book.Title,
-                Category = "",
-                Price = 0,
-                Isbn = "",
-                PublishDate = System.DateTime.Now,
+                Category = input.book.Category,
+                Price = input.book.Price,
+                Isbn = input.book.Isbn,
+                PublishDate = input.book.PublishDate,
                 CreatedAt = System.DateTime.Now
             };
 
             context.Books.Add(book);
             await context.SaveChangesAsync(cancellationToken);
 
-            await eventSender.SendAsync(nameof(Subscription.OnPlatformAdded), book, cancellationToken);
+            await eventSender.SendAsync(nameof(Subscription.OnBookAdded), book, cancellationToken);
 
             return new AddBookPayload(book);
         }
