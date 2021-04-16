@@ -32,6 +32,24 @@ namespace Library.Api.GraphQL
             return context.InventoryMovements;
         }
 
+
+        [UseDbContext(typeof(GlobalAzureContext))]
+        [UseFiltering]
+        [UseSorting]
+        public IQueryable<Genre> GetGenre([ScopedService] GlobalAzureContext context)
+        {
+            return context.Genres;
+        }
+
+        [UseDbContext(typeof(GlobalAzureContext))]
+        [UseFiltering]
+        [UseSorting]
+        public IQueryable<BookGenre> GetBookGenre([ScopedService] GlobalAzureContext context)
+        {
+            return context.BookGenres;
+        }
+
+
         //TODO: Add method for Getting data from other entities
 
     }
