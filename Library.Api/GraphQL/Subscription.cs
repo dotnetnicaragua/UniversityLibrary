@@ -16,5 +16,21 @@ namespace Library.Api.GraphQL
         {
             return book;
         }
+
+        [Subscribe]
+        [Topic]
+        public Genre OnPlatformAdded([EventMessage] Genre genre)
+        {
+            return genre;
+        }
+
+
+        [Subscribe]
+        [Topic]
+        public BookGenre OnPlatformAdded([EventMessage] BookGenre bookGenre)
+        {
+            return bookGenre;
+        }
+
     }
 }
