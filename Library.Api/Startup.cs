@@ -1,17 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using GraphQL.Server.Ui.Voyager;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Library.Api.Data;
 using Library.Api.GraphQL;
 using Library.Api.GraphQL.Books;
+using Library.Api.GraphQL.Inventories;
+using Library.Api.GraphQL.InventoryMovements;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace Library.Api
 {
@@ -36,6 +34,8 @@ namespace Library.Api
                 .AddMutationType<Mutation>()
                 .AddSubscriptionType<Subscription>()
                 .AddType<BookType>()
+                .AddType<InventoryType>()
+                .AddType<InventoryMovementType>()
                 .AddFiltering()
                 .AddSorting()
                 .AddInMemorySubscriptions();
