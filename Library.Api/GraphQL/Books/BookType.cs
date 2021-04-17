@@ -17,8 +17,8 @@ namespace Library.Api.GraphQL.Books
                 .Field(p => p.CreatedAt).Ignore();
 
             descriptor
-                .Field(c => c.Id)
-                //.ResolveWith<Resolvers>(c => c.GetBookAuthors(default!, default!))
+                .Field(c => c.BookAuthors)
+                .ResolveWith<Resolvers>(c => c.GetBookAuthors(default!, default!))
                 .UseDbContext<GlobalAzureContext>()
                 .Description("This is the Book Author");
 
